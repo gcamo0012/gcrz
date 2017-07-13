@@ -1,0 +1,28 @@
+import pandas as pd
+ 
+#new_calendar = pd.read_csv("FinancialCentres_20161208.csv")
+#read in copp clark file as new_calendar
+new_calendar = pd.read_csv('C:\\Python27\\FinancialCentres_20161208.csv')
+ 
+#assign new_calendar to calendar_1, assign abu to rows containing abu dhabi holidays
+#same for auckland
+calendar_1 = new_calendar
+abu = calendar_1[calendar_1.FinancialCentre == "Abu Dhabi"]
+ 
+auckland = calendar_1[calendar_1.FinancialCentre == "Auckland"]
+ 
+#take only eventdate column for holidays only
+auckland = auckland['EventDate']
+abu = abu['EventDate']
+ 
+#combine holiday scheds, remove duplicates using set
+schedule = []
+schedule.extend(auckland)
+schedule.extend(abu)
+ 
+print set(schedule)
+ 
+##not working yet
+from datetime import datetime
+#convert list to string elements
+newsched = ','.join(str(x) for x in newsched)
